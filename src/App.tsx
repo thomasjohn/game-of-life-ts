@@ -75,7 +75,7 @@ function App() {
         throw new Error('input file not available')
       })
 
-  // do not render if no data available
+  // do not render if no data
   if (txtData==='')
     return null
 
@@ -102,7 +102,7 @@ function App() {
   const generationWord = data[idxGeneration]
   // checking the format
   if (generationWord[generationWord.length-1]!==':')
-    throw new Error('check <generation>: format')
+    throw new Error('check text data file format')
   generation = Number(generationWord.substr(0, generationWord.length-1))
   if (isNaN(generation))
     throw new Error('wrong generation defined')
@@ -111,14 +111,14 @@ function App() {
   // get width
   gridHeight = Number(data[idxGeneration])
   // checking the format
-  if (isNaN(gridWidth))
+  if (isNaN(gridHeight))
     throw new Error('wrong height defined')
   idxGeneration++
 
   // get height
   gridWidth = Number(data[idxGeneration])
   // checking the format
-  if (isNaN(gridWidth))
+  if (isNaN(gridWidth) || gridWidth===0)
     throw new Error('wrong width defined')
   idxGeneration++
 
